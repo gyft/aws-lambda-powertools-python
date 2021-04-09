@@ -934,20 +934,39 @@ times with the same parameters</strong>. This makes idempotent operations safe t
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
-<p>Before getting started, you need to create a persistent storage layer where the idempotency utility can store its
-state - your lambda functions will need read and write access to it.</p>
+<p>Before getting started, you need to create a persistent storage layer where the idempotency utility can store its state - your lambda functions will need read and write access to it.</p>
 <p>As of now, Amazon DynamoDB is the only supported persistent storage layer, so you'll need to create a table first.</p>
+<p><strong>Default table configuration</strong></p>
+<p>If you're not <a href="#dynamodbpersistencelayer">changing the default configuration for the DynamoDB persistence layer</a>, this is the expected default configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Partition key</td>
+<td><code>id</code></td>
+<td></td>
+</tr>
+<tr>
+<td>TTL attribute name</td>
+<td><code>expiration</code></td>
+<td>This can only be configured after your table is created if you're using AWS Console</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">You can share a single state table for all functions</p>
+<p>You can reuse the same DynamoDB table to store idempotency state. We add your <code>function_name</code> in addition to the idempotency key as a hash key.</p>
+</div>
 <blockquote>
 <p>Example using AWS Serverless Application Model (SAM)</p>
 </blockquote>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yml</label><div class="tabbed-content">
-<div class="admonition tip">
-<p class="admonition-title">You can share a single state table for all functions</p>
-<blockquote>
-<p>New in 1.12.0</p>
-</blockquote>
-<p>You can reuse the same DynamoDB table to store idempotency state. We add your function_name in addition to the idempotency key as a hash key.</p>
-</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1993,7 +2012,7 @@ event - not the "raw" event Lambda was invoked with. You will need to account fo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-05
+      Last update: 2021-04-09
     
   </small>
 </div>

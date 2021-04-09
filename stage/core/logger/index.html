@@ -457,6 +457,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#setting-timestamp-to-utc" class="md-nav__link">
+    Setting timestamp to UTC
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -858,6 +865,13 @@
           <li class="md-nav__item">
   <a href="#overriding-log-records" class="md-nav__link">
     Overriding Log records
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-timestamp-to-utc" class="md-nav__link">
+    Setting timestamp to UTC
   </a>
   
 </li>
@@ -1907,10 +1921,38 @@
 </td></tr></table>
 </div>
 </div>
+<h4 id="setting-timestamp-to-utc">Setting timestamp to UTC<a class="headerlink" href="#setting-timestamp-to-utc" title="Permanent link">&para;</a></h4>
+<p>By default, this Logger and standard logging library emits records using local time timestamp. You can override this behaviour by updating the current converter set in our formatter:</p>
+<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+</span>
+<span class="hll"><span class="kn">import</span> <span class="nn">time</span>
+</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;sample_service&quot;</span><span class="p">)</span>
+
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Local time&quot;</span><span class="p">)</span>
+
+<span class="hll"><span class="n">logger</span><span class="o">.</span><span class="n">_logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">converter</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span>
+</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;GMT time&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>When unit testing your code that makes use of <code>inject_lambda_context</code> decorator, you need to pass a dummy Lambda Context, or else Logger will fail.</p>
 <p>This is a Pytest sample that provides the minimum information necessary for Logger to succeed:</p>
-<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">fake_lambda_context_for_logger.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">fake_lambda_context_for_logger.py</label><div class="tabbed-content">
 <p>Note that dataclasses are available in Python 3.7+ only.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1950,7 +1992,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">fake_lambda_context_for_logger_py36.py</label><div class="tabbed-content">
+<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">fake_lambda_context_for_logger_py36.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2052,7 +2094,7 @@
 <p><strong>How can I enable boto3 and botocore library logging?</strong></p>
 <p>You can enable the <code>botocore</code> and <code>boto3</code> logs by using the <code>set_stream_logger</code> method, this method will add a stream handler
 for the given name and level to the logging module. By default, this logs all boto3 messages to stdout.</p>
-<div class="tabbed-set" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">log_botocore_and_boto3.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">log_botocore_and_boto3.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2091,7 +2133,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <p><strong>What's the difference between <code>structure_log</code> and <code>extra</code>?</strong></p>
 <p>Keys added with <code>structure_log</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
 <p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
-<div class="tabbed-set" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">lambda_handler.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">lambda_handler.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2118,7 +2160,7 @@ for the given name and level to the logging module. By default, this logs all bo
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><label for="__tabbed_18_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><label for="__tabbed_19_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2168,7 +2210,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-05
+      Last update: 2021-04-09
     
   </small>
 </div>
