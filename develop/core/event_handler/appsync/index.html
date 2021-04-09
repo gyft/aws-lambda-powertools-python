@@ -732,7 +732,7 @@
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">schema.graphql</label><div class="tabbed-content">
 <div class="admonition tip">
 <p class="admonition-title">Designing GraphQL Schemas for the first time?</p>
-<p>Visit <a href="https://docs.aws.amazon.com/appsync/latest/devguide/designing-your-schema.html">AWS AppSync schema documentation</a> for understanding how to define types, nesting, and pagination.</p>
+<p>Visit <a href="https://docs.aws.amazon.com/appsync/latest/devguide/designing-your-schema.html" target="_blank">AWS AppSync schema documentation</a> for understanding how to define types, nesting, and pagination.</p>
 </div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1085,12 +1085,12 @@
 
 <span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 </span><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">AppSyncResolver</span>
-</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.appsync</span> <span class="kn">import</span> <span class="n">scalar_types_utils</span>
-
+</span><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.appsync</span> <span class="kn">import</span> <span class="n">scalar_types_utils</span>
+</span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;sample_resolver&quot;</span><span class="p">)</span>
-<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;sample_resolver&quot;</span><span class="p">)</span>
-</span><span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncResolver</span><span class="p">()</span>
-
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;sample_resolver&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncResolver</span><span class="p">()</span>
+</span>
 <span class="c1"># Note that `creation_time` isn&#39;t available in the schema</span>
 <span class="c1"># This utility also takes into account what info you make available at API level vs what&#39;s stored</span>
 <span class="n">TODOS</span> <span class="o">=</span> <span class="p">[</span>
@@ -1110,25 +1110,25 @@
     <span class="p">},</span>
 <span class="p">]</span>
 
-<span class="hll">
-</span><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">type_name</span><span class="o">=</span><span class="s2">&quot;Query&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;getTodo&quot;</span><span class="p">)</span>
-</span><span class="k">def</span> <span class="nf">get_todo</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fetching Todo </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">type_name</span><span class="o">=</span><span class="s2">&quot;Query&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;getTodo&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="k">def</span> <span class="nf">get_todo</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+</span>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fetching Todo </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">todo</span> <span class="o">=</span> <span class="p">[</span><span class="n">todo</span> <span class="k">for</span> <span class="n">todo</span> <span class="ow">in</span> <span class="n">TODOS</span> <span class="k">if</span> <span class="n">todo</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="nb">id</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">todo</span>
 
-<span class="hll">
-</span><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">type_name</span><span class="o">=</span><span class="s2">&quot;Query&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;listTodos&quot;</span><span class="p">)</span>
-</span><span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">TODOS</span>
+
+<span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">type_name</span><span class="o">=</span><span class="s2">&quot;Query&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;listTodos&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="k">def</span> <span class="nf">list_todos</span><span class="p">():</span>
+</span>    <span class="k">return</span> <span class="n">TODOS</span>
 
 
 <span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">correlation_paths</span><span class="o">.</span><span class="n">APPSYNC_RESOLVER</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
-<span class="hll"><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-</span>    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-</code></pre></div>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="hll">    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</span></code></pre></div>
 </td></tr></table>
 </div>
 <input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">schema.graphql</label><div class="tabbed-content">
@@ -1518,24 +1518,24 @@
     <span class="nx">name</span>: <span class="kt">String</span><span class="o">!</span>
     <span class="nx">description</span>: <span class="kt">String</span>
     <span class="err">#</span> <span class="nx">Resolves</span> <span class="nx">to</span> <span class="sb">`common_field`</span>
-    <span class="nx">commonField</span>: <span class="kt">String</span>  <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;merchantInfo-${env}&quot;</span><span class="p">)</span>
-<span class="hll"><span class="p">}</span>
-</span>
-<span class="hll"><span class="kd">type</span> <span class="nx">Location</span> <span class="p">{</span>
-</span>    <span class="nx">id</span>: <span class="kt">ID</span><span class="o">!</span>
+<span class="hll">    <span class="nx">commonField</span>: <span class="kt">String</span>  <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;merchantInfo-${env}&quot;</span><span class="p">)</span>
+</span><span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Location</span> <span class="p">{</span>
+    <span class="nx">id</span>: <span class="kt">ID</span><span class="o">!</span>
     <span class="nx">name</span>: <span class="kt">String</span><span class="o">!</span>
     <span class="nx">address</span>: <span class="kt">String</span>
     <span class="err">#</span> <span class="nx">Resolves</span> <span class="nx">to</span> <span class="sb">`common_field`</span>
-    <span class="nx">commonField</span>: <span class="kt">String</span>  <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;merchantInfo-${env}&quot;</span><span class="p">)</span>
-<span class="p">}</span>
+<span class="hll">    <span class="nx">commonField</span>: <span class="kt">String</span>  <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;merchantInfo-${env}&quot;</span><span class="p">)</span>
+</span><span class="p">}</span>
 
-<span class="hll"><span class="kd">type</span> <span class="nx">Query</span> <span class="p">{</span>
-</span>  <span class="err">#</span> <span class="nx">List</span> <span class="k">of</span> <span class="nx">locations</span> <span class="nx">resolves</span> <span class="nx">to</span> <span class="sb">`list_locations`</span>
-  <span class="nx">listLocations</span><span class="p">(</span><span class="nx">page</span>: <span class="kt">Int</span><span class="p">,</span> <span class="nx">size</span>: <span class="kt">Int</span><span class="p">)</span><span class="o">:</span> <span class="p">[</span><span class="nx">Location</span><span class="p">]</span> <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;merchantInfo-${env}&quot;</span><span class="p">)</span>
+<span class="kd">type</span> <span class="nx">Query</span> <span class="p">{</span>
   <span class="err">#</span> <span class="nx">List</span> <span class="k">of</span> <span class="nx">locations</span> <span class="nx">resolves</span> <span class="nx">to</span> <span class="sb">`list_locations`</span>
-  <span class="nx">findMerchant</span><span class="p">(</span><span class="nx">search</span>: <span class="kt">str</span><span class="p">)</span><span class="o">:</span> <span class="p">[</span><span class="nx">Merchant</span><span class="p">]</span> <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;searchMerchant-${env}&quot;</span><span class="p">)</span>
-<span class="hll"><span class="p">}</span>
-</span></code></pre></div>
+<span class="hll">  <span class="nx">listLocations</span><span class="p">(</span><span class="nx">page</span>: <span class="kt">Int</span><span class="p">,</span> <span class="nx">size</span>: <span class="kt">Int</span><span class="p">)</span><span class="o">:</span> <span class="p">[</span><span class="nx">Location</span><span class="p">]</span> <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;merchantInfo-${env}&quot;</span><span class="p">)</span>
+</span>  <span class="err">#</span> <span class="nx">List</span> <span class="k">of</span> <span class="nx">locations</span> <span class="nx">resolves</span> <span class="nx">to</span> <span class="sb">`list_locations`</span>
+<span class="hll">  <span class="nx">findMerchant</span><span class="p">(</span><span class="nx">search</span>: <span class="kt">str</span><span class="p">)</span><span class="o">:</span> <span class="p">[</span><span class="nx">Merchant</span><span class="p">]</span> <span class="kd">@function</span><span class="p">(</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;searchMerchant-${env}&quot;</span><span class="p">)</span>
+</span><span class="p">}</span>
+</code></pre></div>
 </td></tr></table>
 </div>
 </div>
@@ -1985,7 +1985,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-08
+      Last update: 2021-04-09
     
   </small>
 </div>

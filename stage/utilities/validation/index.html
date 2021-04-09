@@ -777,7 +777,7 @@
 </div>
 <p>You can validate inbound and outbound events using <a href="#validator-decorator"><code>validator</code> decorator</a>.</p>
 <p>You can also use the standalone <code>validate</code> function, if you want more control over the validation process such as handling a validation error.</p>
-<p>We support any JSONSchema draft supported by <a href="https://horejsek.github.io/python-fastjsonschema/">fastjsonschema</a> library.</p>
+<p>We support any JSONSchema draft supported by <a href="https://horejsek.github.io/python-fastjsonschema/" target="_blank">fastjsonschema</a> library.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Both <code>validator</code> decorator and <code>validate</code> standalone function expects your JSON Schema to be a <strong>dictionary</strong>, not a filename.</p>
@@ -1343,7 +1343,7 @@
 <h3 id="validating-custom-formats">Validating custom formats<a class="headerlink" href="#validating-custom-formats" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">New in 1.10.0</p>
-<p>JSON Schema DRAFT 7 <a href="https://json-schema.org/understanding-json-schema/reference/string.html#format">has many new built-in formats</a> such as date, time, and specifically a regex format which might be a better replacement for a custom format, if you do have control over the schema.</p>
+<p>JSON Schema DRAFT 7 <a href="https://json-schema.org/understanding-json-schema/reference/string.html#format" target="_blank">has many new built-in formats</a> such as date, time, and specifically a regex format which might be a better replacement for a custom format, if you do have control over the schema.</p>
 </div>
 <p>JSON Schemas with custom formats like <code>int64</code> will fail validation. If you have these, you can pass them using <code>formats</code> parameter:</p>
 <div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">custom_json_schema_type_format.json</label><div class="tabbed-content">
@@ -2142,7 +2142,7 @@
 <p>This should only be used for advanced use cases where you have special formats not covered by the built-in functions.</p>
 <p>This will <strong>replace all provided built-in functions such as <code>powertools_json</code>, so you will no longer be able to use them</strong>.</p>
 </div>
-<p>For special binary formats that you want to decode before applying JSON Schema validation, you can bring your own <a href="https://github.com/jmespath/jmespath.py#custom-functions">JMESPath function</a> and any additional option via <code>jmespath_options</code> param.</p>
+<p>For special binary formats that you want to decode before applying JSON Schema validation, you can bring your own <a href="https://github.com/jmespath/jmespath.py#custom-functions" target="_blank">JMESPath function</a> and any additional option via <code>jmespath_options</code> param.</p>
 <div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">custom_jmespath_function.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2268,7 +2268,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-08
+      Last update: 2021-04-09
     
   </small>
 </div>
