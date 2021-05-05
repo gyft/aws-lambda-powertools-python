@@ -1255,13 +1255,13 @@
 </span><span class="hll">    <span class="p">}</span>
 </span><span class="p">}</span>
 
-<span class="hll"><span class="n">ret</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">UserModel</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">envelopes</span><span class="o">.</span><span class="n">EventBridgeModel</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="hll"><span class="n">ret</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">UserModel</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">envelopes</span><span class="o">.</span><span class="n">EventBridgeEnvelope</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 </span>
 <span class="c1"># Parsed model only contains our actual model, not the entire EventBridge + Payload parsed</span>
 <span class="k">assert</span> <span class="n">ret</span><span class="o">.</span><span class="n">password1</span> <span class="o">==</span> <span class="n">ret</span><span class="o">.</span><span class="n">password2</span>
 
 <span class="c1"># Same behaviour but using our decorator</span>
-<span class="hll"><span class="nd">@event_parser</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">UserModel</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">envelopes</span><span class="o">.</span><span class="n">EventBridgeModel</span><span class="p">)</span>
+<span class="hll"><span class="nd">@event_parser</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">UserModel</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="n">envelopes</span><span class="o">.</span><span class="n">EventBridgeEnvelope</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">UserModel</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">password1</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="n">password2</span>
 </code></pre></div>
@@ -1271,7 +1271,7 @@
 <p><strong>What's going on here, you might ask</strong>:</p>
 <ol>
 <li>We imported built-in <code>envelopes</code> from the parser utility</li>
-<li>Used <code>envelopes.EventBridgeModel</code> as the envelope for our <code>UserModel</code> model</li>
+<li>Used <code>envelopes.EventBridgeEnvelope</code> as the envelope for our <code>UserModel</code> model</li>
 <li>Parser parsed the original event against the EventBridge model</li>
 <li>Parser then parsed the <code>detail</code> key using <code>UserModel</code></li>
 </ol>
@@ -1742,7 +1742,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-21
+      Last update: 2021-05-05
     
   </small>
 </div>

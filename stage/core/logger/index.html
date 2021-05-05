@@ -1173,7 +1173,7 @@
 <tr>
 <td><strong>xray_trace_id</strong>: <code>str</code></td>
 <td><code>1-5759e988-bd862e3fe1be46a994272793</code></td>
-<td>When <a href="https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html">tracing is enabled</a>, it shows X-Ray Trace ID</td>
+<td>When <a href="https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html" target="_blank">tracing is enabled</a>, it shows X-Ray Trace ID</td>
 </tr>
 <tr>
 <td><strong>sampling_rate</strong>: <code>float</code></td>
@@ -2050,7 +2050,7 @@
 <p>Logger allows you to either change the format or suppress the following keys altogether at the initialization: <code>location</code>, <code>timestamp</code>, <code>level</code>, <code>xray_trace_id</code>.</p>
 <div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">lambda_handler.py</label><div class="tabbed-content">
 <blockquote>
-<p>We honour standard <a href="https://docs.python.org/3/howto/logging.html#displaying-the-date-time-in-messages">logging library string formats</a>.</p>
+<p>We honour standard <a href="https://docs.python.org/3/howto/logging.html#displaying-the-date-time-in-messages" target="_blank">logging library string formats</a>.</p>
 </blockquote>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2364,7 +2364,7 @@
 </div>
 </div>
 <h4 id="bring-your-own-json-serializer">Bring your own JSON serializer<a class="headerlink" href="#bring-your-own-json-serializer" title="Permanent link">&para;</a></h4>
-<p>By default, Logger uses <code>json.dumps</code> and <code>json.loads</code> as serializer and deserializer respectively. There could be scenarios where you are making use of alternative JSON libraries like <a href="https://github.com/ijl/orjson">orjson</a>.</p>
+<p>By default, Logger uses <code>json.dumps</code> and <code>json.loads</code> as serializer and deserializer respectively. There could be scenarios where you are making use of alternative JSON libraries like <a href="https://github.com/ijl/orjson" target="_blank">orjson</a>.</p>
 <p>As parameters don't always translate well between them, you can pass any callable that receives a <code>Dict</code> and return a <code>str</code>:</p>
 <div class="tabbed-set" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><label for="__tabbed_23_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2530,7 +2530,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you're using pytest and are looking to assert plain log messages, do check out the built-in <a href="https://docs.pytest.org/en/latest/how-to/logging.html">caplog fixture</a>.</p>
+<p>If you're using pytest and are looking to assert plain log messages, do check out the built-in <a href="https://docs.pytest.org/en/latest/how-to/logging.html" target="_blank">caplog fixture</a>.</p>
 </div>
 <h3 id="pytest-live-log-feature">Pytest live log feature<a class="headerlink" href="#pytest-live-log-feature" title="Permanent link">&para;</a></h3>
 <p>Pytest Live Log feature duplicates emitted log messages in order to style log statements according to their levels, for this to work use <code>POWERTOOLS_LOG_DEDUPLICATION_DISABLED</code> env var.</p>
@@ -2665,7 +2665,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-04
+      Last update: 2021-05-05
     
   </small>
 </div>
