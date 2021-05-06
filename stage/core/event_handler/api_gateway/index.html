@@ -1238,7 +1238,7 @@
 </span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">http_api_v2</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">APIGatewayProxyEventV2</span><span class="p">)</span>
 </span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -1280,7 +1280,7 @@
 </span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">alb_event</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">ALBEvent</span><span class="p">)</span>
 </span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
