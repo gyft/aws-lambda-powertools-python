@@ -889,9 +889,6 @@
                   <h1>API Gateway</h1>
                 
                 <p>Event handler for Amazon API Gateway REST/HTTP APIs and Application Loader Balancer (ALB).</p>
-<div class="admonition info">
-<p class="admonition-title">This is currently in Beta as we want to hear feedback on UX.</p>
-</div>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Lightweight routing to reduce boilerplate for API Gateway REST/HTTP API and ALB</li>
@@ -1330,7 +1327,7 @@
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
 </span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
 <span class="hll"><span class="k">def</span> <span class="nf">get_hello_you</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-</span>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">name</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">}</span>
+</span>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
 <span class="c1"># You can continue to use other utilities just as before</span>
 <span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">correlation_paths</span><span class="o">.</span><span class="n">API_GATEWAY_REST</span><span class="p">)</span>
@@ -2010,7 +2007,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-05
+      Last update: 2021-05-06
     
   </small>
 </div>
