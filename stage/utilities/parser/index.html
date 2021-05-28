@@ -568,13 +568,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#bringing-your-own-envelope" class="md-nav__link">
-    Bringing your own envelope
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -742,13 +735,6 @@
           <li class="md-nav__item">
   <a href="#built-in-envelopes" class="md-nav__link">
     Built-in envelopes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bringing-your-own-envelope" class="md-nav__link">
-    Bringing your own envelope
   </a>
   
 </li>
@@ -1090,6 +1076,10 @@
 <td><strong>APIGatewayProxyEvent</strong></td>
 <td>Lambda Event Source payload for Amazon API Gateway</td>
 </tr>
+<tr>
+<td><strong>APIGatewayProxyEventV2Model</strong></td>
+<td>Lambda Event Source payload for Amazon API Gateway v2 payload</td>
+</tr>
 </tbody>
 </table>
 <h3 id="extending-built-in-models">extending built-in models<a class="headerlink" href="#extending-built-in-models" title="Permanent link">&para;</a></h3>
@@ -1340,9 +1330,18 @@
 <td>1. Parses data using <code>APIGatewayProxyEventModel</code>. <br/> 2. Parses <code>body</code> key using your model and returns it.</td>
 <td><code>Model</code></td>
 </tr>
+<tr>
+<td><strong>ApiGatewayV2Envelope</strong></td>
+<td>1. Parses data using <code>APIGatewayProxyEventV2Model</code>. <br/> 2. Parses <code>body</code> key using your model and returns it.</td>
+<td><code>Model</code></td>
+</tr>
+<tr>
+<td>### Bringing your own envelope</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
-<h3 id="bringing-your-own-envelope">Bringing your own envelope<a class="headerlink" href="#bringing-your-own-envelope" title="Permanent link">&para;</a></h3>
 <p>You can create your own Envelope model and logic by inheriting from <code>BaseEnvelope</code>, and implementing the <code>parse</code> method.</p>
 <p>Here's a snippet of how the EventBridge envelope we demonstrated previously is implemented.</p>
 <p><strong>EventBridge Model</strong></p>
@@ -1752,7 +1751,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-06
+      Last update: 2021-05-28
     
   </small>
 </div>
