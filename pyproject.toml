@@ -52,6 +52,8 @@ flake8-bugbear = "^21.3.2"
 mkdocs-material = "^7.1.9"
 mkdocs-git-revision-date-plugin = "^0.3.1"
 mike = "^0.6.0"
+mypy = "^0.902"
+boto3-stubs = {extras = ["dynamodb", "s3"], version = "^1.17.97"}
 
 
 [tool.poetry.extras]

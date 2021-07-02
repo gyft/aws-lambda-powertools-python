@@ -6,7 +6,7 @@ import random
 import sys
 from typing import Any, Callable, Dict, Iterable, Optional, TypeVar, Union
 
-import jmespath
+import jmespath  # type: ignore
 
 from ..shared import constants
 from ..shared.functions import resolve_env_var_choice, resolve_truthy_env_var_choice
