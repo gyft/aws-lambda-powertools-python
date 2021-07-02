@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.7">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.9">
     
     
       
@@ -44,6 +44,8 @@
     
     
       
+
+
     
     
   </head>
@@ -1109,10 +1111,11 @@ decorated function response contains a file-like object or a <a href="https://bo
 </blockquote>
 <p>Use <strong><code>capture_response=False</code></strong> parameter in both <code>capture_lambda_handler</code> and <code>capture_method</code> decorators to instruct Tracer <strong>not</strong> to serialize function responses as metadata.</p>
 <div class="admonition info">
-<p class="admonition-title">This is commonly useful in two scenarios</p>
+<p class="admonition-title">This is commonly useful in three scenarios</p>
 <ol>
 <li>You might <strong>return sensitive</strong> information you don't want it to be added to your traces</li>
 <li>You might manipulate <strong>streaming objects that can be read only once</strong>; this prevents subsequent calls from being empty</li>
+<li>You might return <strong>more than 64K</strong> of data <em>e.g., <code>message too long</code> error</em></li>
 </ol>
 </div>
 <div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">sensitive_data_scenario.py</label><div class="tabbed-content">
@@ -1352,7 +1355,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-19
+      Last update: 2021-07-02
     
   </small>
 </div>
@@ -1435,12 +1438,10 @@ decorated function response contains a file-like object or a <a href="https://bo
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.477d984a.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
-      
-        <script src="../../javascript/aws-amplify.min.js"></script>
+      <script src="../../assets/javascripts/bundle.82b56eb2.min.js"></script>
       
         <script src="../../javascript/extra.js"></script>
       
